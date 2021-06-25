@@ -1,4 +1,5 @@
-#### **Disclaimer:**
+#### Disclaimer:
+
 The contents of this repository are heavily adapted from
 [this post](https://towardsdatascience.com/how-to-setup-your-jupyterlab-project-environment-74909dade29b)
 and [JupyterLab-Configuration](https://github.com/frankzickert/jupyterlab-configuration).<br/>
