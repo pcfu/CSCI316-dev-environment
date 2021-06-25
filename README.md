@@ -1,9 +1,16 @@
+#### **Disclaimer:**
+The contents of this repository are heavily adapted from
+[this post](https://towardsdatascience.com/how-to-setup-your-jupyterlab-project-environment-74909dade29b)
+and [JupyterLab-Configuration](https://github.com/frankzickert/jupyterlab-configuration).<br/>
+The aim is to enable quick and fuss-free setup for a portable development environment for CSCI316 module.
+---
+
 # Setup Guide
 
 ## Linux
 
 1. Install [Docker](https://docs.docker.com/engine/install/) (Google how to do this on your distro)
-2. `git clone` this repo into a directory of your choice
+2. `git clone` this repository into a directory of your choice
 3. Open a terminal and `cd` to your project directory
 4. Execute `./run.sh` (Note the `.` in front of `/`)
 
@@ -27,14 +34,14 @@ Wait for image to install. Proceed with step 5 **when you see the following outp
 
 <br/>
 
-# Interacting with the Image
+# Sharing Files with the Image
 
 The project directory on the **host machine** is mounted onto `/usr/local/bin/jpl_config` **on the image**.<br/>
 Hence, files and folders in the project directory will also be available (and editable) in the image.<br/>
 Conversely, anything outside of the project directory is **NOT** accessible in the image.<br/>
 
 You can put your work files and folders into `<project-directory>/notebooks`.<br/>
-It is **not recommended** to edit the other files unless you know what your are doing.
+It is **not recommended** to edit the other files unless you know what you are doing.
 
 <table class="image">
 <tr><td><img src="usage_1.png" width="600"></td></tr>
@@ -43,5 +50,5 @@ It is **not recommended** to edit the other files unless you know what your are 
 
 <table class="image">
 <tr><td><img src="usage_2.png" width="600"></td></tr>
-<tr><td class="caption" >Changes in project directory are also reflect in image</td></tr>
+<tr><td class="caption" >Changes in project directory are also reflected in image</td></tr>
 </table>
