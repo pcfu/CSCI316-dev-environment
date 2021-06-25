@@ -1,0 +1,13 @@
+tensorflow
+scikit-learn
+scipy
+numpy
+pandas
+matplotlib
+importlib
+psutil
+py4j
+pyarrow
+cairocffi
+findspark
+pyspark
