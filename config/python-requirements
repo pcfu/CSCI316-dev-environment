@@ -1,9 +1,11 @@
+requests
 tensorflow
 scikit-learn
 scipy
 numpy
 pandas
 matplotlib
+seaborn
 importlib
 psutil
 py4j
@@ -11,3 +13,6 @@ pyarrow
 cairocffi
 findspark
 pyspark
+jupyter
+jupyterlab
+bash_kernel
