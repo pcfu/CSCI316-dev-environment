@@ -24,7 +24,9 @@ RUN apt-get update -qq && apt-get upgrade -yq && apt-get install -yq --no-instal
     wget \
     curl \
     pandoc \
-    texlive-xetex
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-plain-generic
 
 RUN cd /home && \
     wget https://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz && \
