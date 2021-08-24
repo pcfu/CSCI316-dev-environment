@@ -17,12 +17,11 @@ RUN apt-get update -qq && apt-get upgrade -yq && apt-get install -yq --no-instal
     zlib1g-dev \
     openssl \
     libffi-dev \
-    default-jdk \
+    openjdk-8-jdk \
     scala \
     python3-dev \
     python3-setuptools \
     wget \
-    curl \
     pandoc \
     texlive-xetex \
     texlive-fonts-recommended \
@@ -34,8 +33,14 @@ RUN cd /home && \
     rm spark-3.1.2-bin-hadoop2.7.tgz && \
     mv spark-3.1.2-bin-hadoop2.7 /usr/local/share
 
+RUN cd /home && \
+    wget https://archive.apache.org/dist/hadoop/common/hadoop-2.7.7/hadoop-2.7.7.tar.gz && \
+    tar xf hadoop-2.7.7.tar.gz && \
+    rm hadoop-2.7.7.tar.gz && \
+    mv hadoop-2.7.7 /usr/local/share
+
 RUN ln -s /usr/bin/python3.8 /usr/bin/python
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+RUN wget https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && rm get-pip.py
 
 COPY config/python-requirements /tmp/python-requirements
@@ -49,11 +54,12 @@ ENV LIBS_PATH=${MAIN_PATH}/libs
 ENV CONFIG_PATH=${MAIN_PATH}/config
 ENV NOTEBOOK_PATH=${MAIN_PATH}/notebooks
 
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV PYSPARK_PYTHON=/usr/bin/python3
 ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/ipython3
 ENV SPARK_HOME=/usr/local/share/spark-3.1.2-bin-hadoop2.7
-ENV HADOOP_HOME=/usr/local/share/spark-3.1.2-bin-hadoop2.7
+ENV HADOOP_HOME=/usr/local/share/hadoop-2.7.7
+ENV LD_LIBRARY_PATH=$HADOOP_HOME/lib/native
 ENV PATH=${PATH}:${JAVA_HOME}:${PYSPARK_PYTHON}:${PYSPARK_DRIVER_PYTHON}:${SPARK_HOME}:${HADOOP_HOME}
 
 EXPOSE 8888
